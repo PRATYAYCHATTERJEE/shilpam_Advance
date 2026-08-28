@@ -16,7 +16,7 @@ function ProductSection() {
   ];
 
   return (
-    <section className="bg-[#f8edda] px-5 py-7">
+    <section className="bg-[#f8edda] px-12 py-7">
 
       {/* MAIN CONTAINER */}
       <div className="relative mx-auto overflow-hidden rounded-xl border border-[#d8b99c] bg-[#fffaf0] px-10 pb-14 pt-9">
@@ -34,10 +34,10 @@ function ProductSection() {
           className="
             pointer-events-none
             absolute
-            left-[18px]
+            left-[-10px]
             top-[18px]
             z-20
-            w-[180px]
+            w-[200px]
             h-auto
           "
         />
@@ -52,10 +52,10 @@ function ProductSection() {
           className="
             pointer-events-none
             absolute
-            right-[18px]
+            right-[-10px]
             top-[18px]
             z-20
-            w-[180px]
+            w-[200px]
             h-auto
             -scale-x-100
           "
@@ -71,10 +71,10 @@ function ProductSection() {
           className="
             pointer-events-none
             absolute
-            left-[18px]
+            left-[-10px]
             bottom-[18px]
             z-20
-            w-[180px]
+            w-[200px]
             h-auto
             -scale-y-100
           "
@@ -90,10 +90,10 @@ function ProductSection() {
           className="
             pointer-events-none
             absolute
-            right-[18px]
+            right-[-10px]
             bottom-[18px]
             z-20
-            w-[180px]
+            w-[200px]
             h-auto
             scale-[-1]
           "
@@ -103,7 +103,7 @@ function ProductSection() {
         {/* =========================
             SECTION TITLE
         ========================== */}
-        <div className="relative z-30 mb-9 flex items-center justify-center gap-4">
+        <div className="relative z-30 mb-4 flex items-center justify-center gap-4">
 
           <span className="text-[18px] text-[#bd431c]">
             ✦
@@ -123,7 +123,7 @@ function ProductSection() {
         {/* =========================
             PRODUCT GRID
         ========================== */}
-        <div className="relative z-30 grid grid-cols-5 gap-x-7 gap-y-8">
+        <div className="relative z-30 mx-20 grid grid-cols-5 gap-x-7 gap-y-8">
 
           {products.map((product, index) => (
             <div
