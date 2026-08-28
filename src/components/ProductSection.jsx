@@ -1,19 +1,73 @@
 import kolka from "../assets/kolka.png";
 
+import product1 from "../assets/bag1.png";
+import product2 from "../assets/bag2.png";
+import product3 from "../assets/bag3.png";
+import product4 from "../assets/bag4.png";
+import product5 from "../assets/bag5.png";
+import product6 from "../assets/bag6.png";
+import product7 from "../assets/bag7.png";
+import product8 from "../assets/bag8.png";
+import product9 from "../assets/bag9.png";
+import product10 from "../assets/bag10.png";
+
+
+
+
+
 function ProductSection() {
   const products = [
-    { name: "Terracotta Vase", price: "₹899" },
-    { name: "Terracotta Vase", price: "₹899" },
-    { name: "Kantha & Textiles", price: "₹899" },
-    { name: "Kantha & Textiles", price: "₹55" },
-    { name: "Terracotta Vase", price: "₹899" },
-
-    { name: "Kantha & Textiles", price: "₹55" },
-    { name: "Terracotta Vase", price: "₹899" },
-    { name: "Terracotta Vase", price: "₹899" },
-    { name: "Woodcraft", price: "₹55" },
-    { name: "Home Décor", price: "₹55" },
-  ];
+  {
+    name: "Terracotta Vase",
+    price: "₹899",
+    image: product1,
+  },
+  {
+    name: "Terracotta Vase",
+    price: "₹899",
+    image: product2,
+  },
+  {
+    name: "Kantha & Textiles",
+    price: "₹899",
+    image: product3,
+  },
+  {
+    name: "Kantha & Textiles",
+    price: "₹55",
+    image: product4,
+  },
+  {
+    name: "Terracotta Vase",
+    price: "₹899",
+    image: product5,
+  },
+  {
+    name: "Terracotta Vase",
+    price: "₹899",
+    image: product6,
+  },
+  {
+    name: "Terracotta Vase",
+    price: "₹899",
+    image: product7,
+  },
+  {
+    name: "Terracotta Vase",
+    price: "₹899",
+    image: product8,
+  },
+  {
+    name: "Terracotta Vase",
+    price: "₹899",
+    image: product9,
+  },
+  {
+    name: "Terracotta Vase",
+    price: "₹899",
+    image: product10,
+  },
+];
 
   return (
     <section className="bg-[#f8edda] px-12 py-7">
@@ -123,7 +177,7 @@ function ProductSection() {
         {/* =========================
             PRODUCT GRID
         ========================== */}
-        <div className="relative z-30 mx-20 grid grid-cols-5 gap-x-7 gap-y-8">
+        <div className="relative z-30 mx-16 grid grid-cols-5 gap-x-7 gap-y-8">
 
           {products.map((product, index) => (
             <div
@@ -142,11 +196,13 @@ function ProductSection() {
             >
 
               {/* IMAGE PLACEHOLDER */}
-              <div className="flex h-[245px] w-full items-center justify-center bg-[#ead8bb]">
-                <span className="font-serif text-[18px] text-[#b69a7b]">
-                  Image Here
-                </span>
-              </div>
+              <div className="h-[190px] w-full overflow-hidden bg-[#ead8bb]">
+  <img
+    src={product.image}
+    alt={product.name}
+    className="h-full w-full object-cover"
+  />
+</div>
 
 
               {/* PRODUCT DETAILS */}
