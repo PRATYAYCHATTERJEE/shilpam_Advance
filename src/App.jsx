@@ -1,0 +1,43 @@
+import { useEffect, useState } from "react";
+
+import OpeningScreen from "./components/OpeningScreen";
+import AnnouncementBar from "./components/AnnouncementBar";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+
+function App() {
+  const [showOpening, setShowOpening] = useState(true);
+  const [showHome, setShowHome] = useState(false);
+
+  useEffect(() => {
+    // Opening screen finishes first
+    const openingTimer = setTimeout(() => {
+      setShowOpening(false);
+
+      // Small delay before revealing homepage
+      setTimeout(() => {
+        setShowHome(true);
+      }, 100);
+    }, 6500);
+
+    return () => clearTimeout(openingTimer);
+  }, []);
+
+  if (showOpening) {
+    return <OpeningScreen />;
+  }
+
+  return (
+    <div
+      className={`transition-opacity duration-[1800ms] ease-out ${
+        showHome ? "opacity-100" : "opacity-0"
+      }`}
+    >
+      <AnnouncementBar />
+      <Navbar />
+      <Hero />
+    </div>
+  );
+}
+
+export default App;

@@ -1,0 +1,658 @@
+/* =========================================
+   SILPAM — OPENING SCREEN
+========================================= */
+
+.opening-screen {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+  min-height: 650px;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 70px 40px 58px;
+
+  background: #f8edda;
+
+  border-top: 3px solid #30241f;
+
+  color: #4a2119;
+
+  animation: openingReveal 2s ease-out both;
+}
+
+
+/* =========================================
+   TOP LABEL
+========================================= */
+
+.opening-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 17px;
+
+  z-index: 2;
+
+  opacity: 0;
+
+  animation: topReveal 1.8s ease-out 0.8s forwards;
+}
+
+.opening-line {
+  width: 38px;
+  height: 1px;
+
+  background: #c6a15e;
+}
+
+.opening-top-text {
+  font-family: Arial, sans-serif;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 4px;
+
+  color: #40574b;
+}
+
+
+/* =========================================
+   CENTER CONTENT
+========================================= */
+
+.opening-center {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  z-index: 5;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.opening-logo {
+  width: 270px;
+  height: 270px;
+
+  object-fit: contain;
+
+  display: block;
+
+  opacity: 0;
+
+  transform: scale(0.65);
+
+  animation:
+    logoReveal
+    2s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    1.2s
+    forwards;
+}
+
+
+/* =========================================
+   SILPAM TITLE
+========================================= */
+
+.opening-title {
+  margin: 25px 0 10px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 58px;
+  line-height: 1;
+
+  font-weight: 500;
+
+  letter-spacing: 9px;
+
+  color: #4a2119;
+
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  animation:
+    titleReveal
+    1.8s
+    ease-out
+    2.3s
+    forwards;
+}
+
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.opening-divider {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 2px;
+
+  opacity: 0;
+
+  transform: scaleX(0.3);
+
+  animation:
+    dividerReveal
+    1.4s
+    ease-out
+    2.9s
+    forwards;
+}
+
+.opening-divider span {
+  width: 45px;
+  height: 1px;
+
+  background: #c99b4c;
+}
+
+.opening-divider i {
+  position: relative;
+
+  width: 6px;
+  height: 6px;
+
+  display: block;
+
+  background: #c99b4c;
+
+  transform: rotate(45deg);
+}
+
+.opening-divider i::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 3px;
+  height: 3px;
+
+  transform: translate(-50%, -50%);
+
+  background: #f8edda;
+}
+
+
+/* =========================================
+   HANDMADE WITH HERITAGE
+========================================= */
+
+.opening-tagline {
+  margin: 13px 0 0;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  color: #496053;
+
+  opacity: 0;
+
+  transform: translateY(10px);
+
+  animation:
+    textReveal
+    1.4s
+    ease-out
+    3.2s
+    forwards;
+}
+
+
+/* =========================================
+   MADE WITH HEART
+========================================= */
+
+.opening-heart {
+  margin: 5px 0 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 18px;
+
+  font-style: italic;
+
+  color: #b8522c;
+
+  opacity: 0;
+
+  transform: translateY(10px);
+
+  animation:
+    textReveal
+    1.4s
+    ease-out
+    3.5s
+    forwards;
+}
+
+
+/* =========================================
+   BOTTOM LABEL
+========================================= */
+
+.opening-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 17px;
+
+  z-index: 2;
+
+  opacity: 0;
+
+  animation:
+    bottomReveal
+    1.5s
+    ease-out
+    3.8s
+    forwards;
+}
+
+.opening-bottom-text {
+  font-family: Arial, sans-serif;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  color: #70422e;
+}
+
+
+/* =========================================
+   DECORATIVE ELEMENTS
+========================================= */
+
+.opening-decoration {
+  position: absolute;
+
+  width: 210px;
+  height: 150px;
+
+  opacity: 0;
+
+  z-index: 1;
+
+  animation:
+    decorationReveal
+    2.2s
+    ease-out
+    1s
+    forwards;
+}
+
+.opening-decoration-left {
+  left: 80px;
+  top: 43%;
+
+  transform: rotate(-18deg);
+}
+
+.opening-decoration-right {
+  right: 80px;
+  top: 43%;
+
+  transform: scaleX(-1) rotate(-18deg);
+}
+
+
+/* =========================================
+   LARGE LEAF
+========================================= */
+
+.opening-decoration::before {
+  content: "";
+
+  position: absolute;
+
+  width: 130px;
+  height: 75px;
+
+  border: 1.5px solid rgba(183, 92, 57, 0.4);
+
+  border-radius: 80% 15% 80% 15%;
+
+  transform: rotate(-25deg);
+}
+
+
+/* =========================================
+   SMALL UPPER LEAF
+========================================= */
+
+.opening-decoration span:nth-child(1) {
+  position: absolute;
+
+  width: 55px;
+  height: 22px;
+
+  left: 8px;
+  top: 3px;
+
+  border: 1.3px solid rgba(183, 92, 57, 0.38);
+
+  border-radius: 80% 20% 80% 20%;
+
+  transform: rotate(-8deg);
+}
+
+
+/* =========================================
+   LOWER LEAF
+========================================= */
+
+.opening-decoration span:nth-child(2) {
+  position: absolute;
+
+  width: 62px;
+  height: 25px;
+
+  left: 38px;
+  top: 90px;
+
+  border: 1.3px solid rgba(183, 92, 57, 0.38);
+
+  border-radius: 20% 80% 20% 80%;
+
+  transform: rotate(-8deg);
+}
+
+
+/* =========================================
+   CURVED STEM
+========================================= */
+
+.opening-decoration span:nth-child(3) {
+  position: absolute;
+
+  width: 90px;
+  height: 45px;
+
+  left: 3px;
+  top: 45px;
+
+  border-left: 1.3px solid rgba(183, 92, 57, 0.3);
+
+  border-bottom: 1.3px solid rgba(183, 92, 57, 0.3);
+
+  border-radius: 0 0 0 80%;
+}
+
+
+/* =========================================
+   ENTRANCE ANIMATIONS
+========================================= */
+
+@keyframes openingReveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes topReveal {
+  from {
+    opacity: 0;
+
+    transform: translateY(-25px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes logoReveal {
+  0% {
+    opacity: 0;
+
+    transform: scale(0.65);
+  }
+
+  60% {
+    opacity: 1;
+
+    transform: scale(1.04);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+}
+
+
+@keyframes titleReveal {
+  from {
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    letter-spacing: 18px;
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    letter-spacing: 9px;
+  }
+}
+
+
+@keyframes dividerReveal {
+  from {
+    opacity: 0;
+
+    transform: scaleX(0.3);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scaleX(1);
+  }
+}
+
+
+@keyframes textReveal {
+  from {
+    opacity: 0;
+
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes bottomReveal {
+  from {
+    opacity: 0;
+
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes decorationReveal {
+  from {
+    opacity: 0;
+
+    transform: scale(0.75);
+  }
+
+  to {
+    opacity: 0.45;
+
+    transform: scale(1);
+  }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  .opening-decoration-left {
+    left: 20px;
+  }
+
+  .opening-decoration-right {
+    right: 20px;
+  }
+
+  .opening-logo {
+    width: 230px;
+    height: 230px;
+  }
+
+  .opening-title {
+    font-size: 52px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .opening-screen {
+    min-height: 600px;
+
+    padding: 50px 20px 45px;
+  }
+
+  .opening-top-text {
+    font-size: 8px;
+
+    letter-spacing: 2.5px;
+  }
+
+  .opening-line {
+    width: 28px;
+  }
+
+  .opening-logo {
+    width: 190px;
+    height: 190px;
+  }
+
+  .opening-title {
+    font-size: 42px;
+
+    letter-spacing: 6px;
+  }
+
+  .opening-tagline {
+    font-size: 8px;
+
+    letter-spacing: 2px;
+  }
+
+  .opening-heart {
+    font-size: 16px;
+  }
+
+  .opening-bottom-text {
+    font-size: 7px;
+
+    letter-spacing: 2px;
+  }
+
+  .opening-decoration {
+    transform: scale(0.65);
+  }
+
+  .opening-decoration-left {
+    left: -30px;
+  }
+
+  .opening-decoration-right {
+    right: -30px;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .opening-screen,
+  .opening-top,
+  .opening-logo,
+  .opening-title,
+  .opening-divider,
+  .opening-tagline,
+  .opening-heart,
+  .opening-bottom,
+  .opening-decoration {
+    animation: none;
+
+    opacity: 1;
+
+    transform: none;
+  }
+}
