@@ -4,17 +4,16 @@ import OpeningScreen from "./components/OpeningScreen";
 import AnnouncementBar from "./components/AnnouncementBar";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import CategoryBar from "./components/CategoryBar";
 
 function App() {
   const [showOpening, setShowOpening] = useState(true);
   const [showHome, setShowHome] = useState(false);
 
   useEffect(() => {
-    // Opening screen finishes first
     const openingTimer = setTimeout(() => {
       setShowOpening(false);
 
-      // Small delay before revealing homepage
       setTimeout(() => {
         setShowHome(true);
       }, 100);
@@ -36,6 +35,7 @@ function App() {
       <AnnouncementBar />
       <Navbar />
       <Hero />
+      <CategoryBar />
     </div>
   );
 }
