@@ -5,6 +5,7 @@ import AnnouncementBar from "./components/AnnouncementBar";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import CategoryBar from "./components/CategoryBar";
+import ProductSection from "./components/ProductSection";
 
 function App() {
   const [showOpening, setShowOpening] = useState(true);
@@ -36,6 +37,7 @@ function App() {
       <Navbar />
       <Hero />
       <CategoryBar />
+      <ProductSection />
     </div>
   );
 }
