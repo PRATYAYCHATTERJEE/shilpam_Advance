@@ -7,6 +7,7 @@ import Hero from "./components/Hero";
 import CategoryBar from "./components/CategoryBar";
 import ProductSection from "./components/ProductSection";
 import Terracotta from "./components/categories/Terracotta";
+import ArtWorks from "./components/categories/ArtWorks";
 
 function App() {
   const [showOpening, setShowOpening] = useState(true);
