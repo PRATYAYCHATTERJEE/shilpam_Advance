@@ -49,9 +49,8 @@ function App() {
       />
 
       {activeCategory === "All Crafts" && <ProductSection />}
-
-{activeCategory === "Terracotta" && <Terracotta />}
-{activeCategory === "Art works" && <ArtWorks />}
+      {activeCategory === "Terracotta" && <Terracotta />}
+      {activeCategory === "Art works" && <ArtWorks />}
     </div>
   );
 }
