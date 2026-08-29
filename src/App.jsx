@@ -8,6 +8,7 @@ import CategoryBar from "./components/CategoryBar";
 import ProductSection from "./components/ProductSection";
 import Terracotta from "./components/categories/Terracotta";
 import ArtWorks from "./components/categories/ArtWorks";
+import BambooCane from "./components/categories/BambooCane";
 
 function App() {
   const [showOpening, setShowOpening] = useState(true);
@@ -51,6 +52,7 @@ function App() {
       {activeCategory === "All Crafts" && <ProductSection />}
       {activeCategory === "Terracotta" && <Terracotta />}
       {activeCategory === "Art works" && <ArtWorks />}
+      {activeCategory === "Bamboo & Cane" && <BambooCane />}
     </div>
   );
 }
