@@ -16,6 +16,10 @@ import Jewellery from "./components/categories/Jewellery";
 import BagsAccessories from "./components/categories/BagsAccessories";
 import HandEmbroidery from "./components/categories/HandEmbroidery";
 
+
+
+
+
 function App() {
   const [showOpening, setShowOpening] = useState(true);
   const [showHome, setShowHome] = useState(false);
