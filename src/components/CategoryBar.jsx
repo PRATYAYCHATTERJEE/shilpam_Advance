@@ -1,7 +1,6 @@
-import { useState } from "react";
 import allIcon from "../assets/all.png";
 
-function CategoryBar() {
+function CategoryBar({ activeCategory, setActiveCategory }) {
   const categories = [
     "All Crafts",
     "Terracotta",
@@ -14,8 +13,6 @@ function CategoryBar() {
     "Bags & Accessories",
     "হাতের ও সৃজনকর্ম",
   ];
-
-  const [activeCategory, setActiveCategory] = useState("All Crafts");
 
   return (
     <section className="w-full bg-[#f8edda] px-5 py-5">
