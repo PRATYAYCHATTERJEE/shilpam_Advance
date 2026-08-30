@@ -181,17 +181,17 @@ function App() {
     >
       <AnnouncementBar />
 
-      <Navbar
-        onLoginClick={() => {
-          setShowLogin(true);
-        }}
-        onSellerClick={() => {
-          setShowSellerRegister(true);
-        }}
-        onArtisansClick={() => {
-          setShowArtisans(true);
-        }}
-      />
+     <Navbar
+  onLoginClick={() => {
+    setShowLogin(true);
+  }}
+  onSellerClick={() => {
+    setShowSellerLogin(true);
+  }}
+  onArtisansClick={() => {
+    setShowArtisans(true);
+  }}
+/>
 
       <Hero />
 
