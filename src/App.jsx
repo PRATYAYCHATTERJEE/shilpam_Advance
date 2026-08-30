@@ -18,15 +18,18 @@ import BagsAccessories from "./components/categories/BagsAccessories";
 import HandEmbroidery from "./components/categories/HandEmbroidery";
 
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   const [showOpening, setShowOpening] = useState(true);
   const [showHome, setShowHome] = useState(false);
 
+  // Category state
   const [activeCategory, setActiveCategory] = useState("All Crafts");
 
-  // Login page state
+  // Login / Signup state
   const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
 
   useEffect(() => {
     const openingTimer = setTimeout(() => {
@@ -40,8 +43,30 @@ function App() {
     return () => clearTimeout(openingTimer);
   }, []);
 
+  // =========================
+  // OPENING SCREEN
+  // =========================
+
   if (showOpening) {
     return <OpeningScreen />;
+  }
+
+  // =========================
+  // SIGNUP PAGE
+  // =========================
+
+  if (showSignup) {
+    return (
+      <Signup
+        onLogin={() => {
+          setShowSignup(false);
+          setShowLogin(true);
+        }}
+        onBack={() => {
+          setShowSignup(false);
+        }}
+      />
+    );
   }
 
   // =========================
@@ -51,10 +76,20 @@ function App() {
   if (showLogin) {
     return (
       <Login
-        onBack={() => setShowLogin(false)}
+        onSignup={() => {
+          setShowLogin(false);
+          setShowSignup(true);
+        }}
+        onBack={() => {
+          setShowLogin(false);
+        }}
       />
     );
   }
+
+  // =========================
+  // MAIN HOME PAGE
+  // =========================
 
   return (
     <div
@@ -65,7 +100,9 @@ function App() {
       <AnnouncementBar />
 
       <Navbar
-        onLoginClick={() => setShowLogin(true)}
+        onLoginClick={() => {
+          setShowLogin(true);
+        }}
       />
 
       <Hero />
@@ -74,6 +111,10 @@ function App() {
         activeCategory={activeCategory}
         setActiveCategory={setActiveCategory}
       />
+
+      {/* =========================
+          CATEGORY PAGES
+      ========================== */}
 
       {activeCategory === "All Crafts" && <ProductSection />}
 

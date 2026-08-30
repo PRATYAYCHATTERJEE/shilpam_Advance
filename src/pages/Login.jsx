@@ -2,7 +2,7 @@ import { useState } from "react";
 import kolka from "../assets/kolka.png";
 import logo from "../assets/logo.png";
 
-function Login() {
+function Login({ onBack, onSignup }) {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
@@ -48,6 +48,31 @@ function Login() {
         className="pointer-events-none absolute bottom-5 right-5 w-[125px] scale-[-1]"
       />
 
+
+      {/* =================================
+          BACK BUTTON
+      ================================= */}
+
+      <button
+        type="button"
+        onClick={onBack}
+        className="
+          absolute
+          left-8
+          top-7
+          z-20
+          font-serif
+          text-[14px]
+          text-[#8c4930]
+          transition-colors
+          duration-300
+          hover:text-[#b44b27]
+        "
+      >
+        ← Back
+      </button>
+
+
       {/* =================================
           BRAND HEADER
       ================================= */}
@@ -78,6 +103,7 @@ function Login() {
 
       </div>
 
+
       {/* =================================
           LOGIN CARD
       ================================= */}
@@ -85,9 +111,13 @@ function Login() {
       <div className="relative z-10 mx-auto mt-7 w-full max-w-[530px] rounded-[22px] border border-[#dfc7ad] bg-[#fffaf1] p-[9px] shadow-[0_10px_35px_rgba(101,55,29,0.08)]">
 
         {/* Inner Border */}
+
         <div className="rounded-[16px] border border-[#ead9c5] px-9 py-8 sm:px-10">
 
-          {/* Heading */}
+          {/* =================================
+              HEADING
+          ================================= */}
+
           <div className="text-center">
 
             <div className="flex items-center justify-center gap-3">
@@ -112,6 +142,7 @@ function Login() {
 
           </div>
 
+
           {/* =================================
               FORM
           ================================= */}
@@ -121,7 +152,10 @@ function Login() {
             className="mt-8"
           >
 
-            {/* Email */}
+            {/* =================================
+                EMAIL
+            ================================= */}
+
             <div>
 
               <label
@@ -158,7 +192,11 @@ function Login() {
 
             </div>
 
-            {/* Password */}
+
+            {/* =================================
+                PASSWORD
+            ================================= */}
+
             <div className="mt-6">
 
               <div className="mb-2 flex items-center justify-between">
@@ -172,12 +210,19 @@ function Login() {
 
                 <button
                   type="button"
-                  className="font-serif text-[13px] text-[#b44b27] transition-colors hover:text-[#7d2f18]"
+                  className="
+                    font-serif
+                    text-[13px]
+                    text-[#b44b27]
+                    transition-colors
+                    hover:text-[#7d2f18]
+                  "
                 >
                   Forgot password?
                 </button>
 
               </div>
+
 
               <div className="relative">
 
@@ -207,6 +252,9 @@ function Login() {
                   "
                 />
 
+
+                {/* Password visibility */}
+
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
@@ -226,14 +274,18 @@ function Login() {
                       : "Show password"
                   }
                 >
-                  {showPassword ? "◉" : "◉"}
+                  ◉
                 </button>
 
               </div>
 
             </div>
 
-            {/* Remember Me */}
+
+            {/* =================================
+                REMEMBER ME
+            ================================= */}
+
             <div className="mt-5 flex items-center gap-2">
 
               <input
@@ -253,7 +305,11 @@ function Login() {
 
             </div>
 
-            {/* Sign In */}
+
+            {/* =================================
+                SIGN IN
+            ================================= */}
+
             <button
               type="submit"
               className="
@@ -279,12 +335,18 @@ function Login() {
               "
             >
               Sign In
+
               <span className="text-[20px]">
                 →
               </span>
+
             </button>
 
-            {/* Divider */}
+
+            {/* =================================
+                DIVIDER
+            ================================= */}
+
             <div className="my-7 flex items-center gap-3">
 
               <div className="h-px flex-1 bg-[#e4d3bf]" />
@@ -297,14 +359,25 @@ function Login() {
 
             </div>
 
-            {/* Create Account */}
+
+            {/* =================================
+                CREATE ACCOUNT
+            ================================= */}
+
             <p className="text-center text-[14px] text-[#805645]">
 
               Don't have an account?
 
               <button
                 type="button"
-                className="ml-2 font-medium text-[#b44b27] transition-colors hover:text-[#7d2f18]"
+                onClick={onSignup}
+                className="
+                  ml-2
+                  font-medium
+                  text-[#b44b27]
+                  transition-colors
+                  hover:text-[#7d2f18]
+                "
               >
                 Create an account
               </button>
