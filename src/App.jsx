@@ -19,6 +19,7 @@ import HandEmbroidery from "./components/categories/HandEmbroidery";
 
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import SellerLogin from "./pages/SellerLogin";
 
 function App() {
   const [showOpening, setShowOpening] = useState(true);
@@ -30,6 +31,7 @@ function App() {
   // Login / Signup state
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
+  const [showSellerLogin, setShowSellerLogin] = useState(false);
 
   useEffect(() => {
     const openingTimer = setTimeout(() => {
@@ -86,7 +88,20 @@ function App() {
       />
     );
   }
+   // =========================
+// SELLER LOGIN PAGE
+// =========================
 
+if (showSellerLogin) {
+  return (
+    <SellerLogin
+      onBack={() => setShowSellerLogin(false)}
+      onSignup={() => {
+        console.log("Seller signup will be connected later");
+      }}
+    />
+  );
+}
   // =========================
   // MAIN HOME PAGE
   // =========================
@@ -100,10 +115,13 @@ function App() {
       <AnnouncementBar />
 
       <Navbar
-        onLoginClick={() => {
-          setShowLogin(true);
-        }}
-      />
+  onLoginClick={() => {
+    setShowLogin(true);
+  }}
+  onSellerClick={() => {
+    setShowSellerLogin(true);
+  }}
+/>
 
       <Hero />
 
