@@ -1,10 +1,16 @@
 import logo from "../assets/logo.png";
 
-function Navbar({ onLoginClick, onSellerClick }) {
+function Navbar({
+  onLoginClick,
+  onSellerClick,
+  onArtisansClick,
+}) {
   return (
     <nav className="flex w-full items-center justify-between border-b border-[#4a2119]/10 bg-[#f8edda] px-8 py-3">
 
-      {/* Logo */}
+      {/* =========================
+          LOGO
+      ========================== */}
       <div className="flex items-center gap-2">
 
         <img
@@ -26,9 +32,12 @@ function Navbar({ onLoginClick, onSellerClick }) {
       </div>
 
 
-      {/* Navigation */}
+      {/* =========================
+          NAVIGATION
+      ========================== */}
       <div className="hidden items-center gap-7 font-serif text-[16px] font-semibold text-[#49372c] lg:flex">
 
+        {/* HOME */}
         <a
           href="#home"
           className="border-b-2 border-[#b8522c] pb-1 text-[#b8522c]"
@@ -36,40 +45,71 @@ function Navbar({ onLoginClick, onSellerClick }) {
           Home
         </a>
 
-        <a href="#shop" className="transition-colors hover:text-[#b8522c]">
+
+        {/* SHOP */}
+        <a
+          href="#shop"
+          className="transition-colors hover:text-[#b8522c]"
+        >
           Shop
         </a>
 
-        <a href="#artisans" className="transition-colors hover:text-[#b8522c]">
-          Artisans
-        </a>
 
+        {/* ARTISANS */}
         <button
-  type="button"
-  onClick={onSellerClick}
-  className="transition-colors hover:text-[#b8522c]"
->
-  Become a Seller
-</button>
+          type="button"
+          onClick={onArtisansClick}
+          className="cursor-pointer transition-colors hover:text-[#b8522c]"
+        >
+          Artisans
+        </button>
 
-        <a href="#about" className="transition-colors hover:text-[#b8522c]">
+
+        {/* BECOME A SELLER */}
+        <button
+          type="button"
+          onClick={onSellerClick}
+          className="cursor-pointer transition-colors hover:text-[#b8522c]"
+        >
+          Become a Seller
+        </button>
+
+
+        {/* ABOUT */}
+        <a
+          href="#about"
+          className="transition-colors hover:text-[#b8522c]"
+        >
           About Us
         </a>
 
-        <a href="#blog" className="transition-colors hover:text-[#b8522c]">
+
+        {/* BLOG */}
+        <a
+          href="#blog"
+          className="transition-colors hover:text-[#b8522c]"
+        >
           Blog
         </a>
 
-        <a href="#contact" className="transition-colors hover:text-[#b8522c]">
+
+        {/* CONTACT */}
+        <a
+          href="#contact"
+          className="transition-colors hover:text-[#b8522c]"
+        >
           Contact
         </a>
 
       </div>
 
 
-      {/* Actions */}
+      {/* =========================
+          ACTIONS
+      ========================== */}
       <div className="flex items-center gap-4 text-[#4a2119]">
 
+        {/* SEARCH */}
         <button
           type="button"
           aria-label="Search"
@@ -78,15 +118,19 @@ function Navbar({ onLoginClick, onSellerClick }) {
           ⌕
         </button>
 
-       <button 
-  type="button" 
-  aria-label="Profile" 
-  onClick={onLoginClick}
-  className="text-xl transition-transform hover:-translate-y-0.5" 
-> 
-  ♙ 
-</button>
 
+        {/* PROFILE / LOGIN */}
+        <button
+          type="button"
+          aria-label="Profile"
+          onClick={onLoginClick}
+          className="text-xl transition-transform hover:-translate-y-0.5"
+        >
+          ♙
+        </button>
+
+
+        {/* WISHLIST */}
         <button
           type="button"
           aria-label="Wishlist"
@@ -95,6 +139,8 @@ function Navbar({ onLoginClick, onSellerClick }) {
           ♡
         </button>
 
+
+        {/* CART */}
         <button
           type="button"
           aria-label="Cart"

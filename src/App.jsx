@@ -21,19 +21,45 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import SellerLogin from "./pages/SellerLogin";
 import SellerRegister from "./pages/SellerRegister";
+import Artisans from "./pages/Artisans";
 
 function App() {
+  // =========================
+  // OPENING SCREEN STATE
+  // =========================
+
   const [showOpening, setShowOpening] = useState(true);
   const [showHome, setShowHome] = useState(false);
 
-  // Category state
-  const [activeCategory, setActiveCategory] = useState("All Crafts");
+  // =========================
+  // CATEGORY STATE
+  // =========================
 
-  // Login / Signup state
-  const [showLogin, setShowLogin] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
-  const [showSellerLogin, setShowSellerLogin] = useState(false);
-  const [showSellerRegister, setShowSellerRegister] = useState(false);
+  const [activeCategory, setActiveCategory] =
+    useState("All Crafts");
+
+  // =========================
+  // PAGE NAVIGATION STATE
+  // =========================
+
+  const [showLogin, setShowLogin] =
+    useState(false);
+
+  const [showSignup, setShowSignup] =
+    useState(false);
+
+  const [showSellerLogin, setShowSellerLogin] =
+    useState(false);
+
+  const [showSellerRegister, setShowSellerRegister] =
+    useState(false);
+
+  const [showArtisans, setShowArtisans] =
+    useState(false);
+
+  // =========================
+  // OPENING SCREEN TIMER
+  // =========================
 
   useEffect(() => {
     const openingTimer = setTimeout(() => {
@@ -90,38 +116,58 @@ function App() {
       />
     );
   }
-   // =========================
-// SELLER LOGIN PAGE
-// =========================
 
-if (showSellerLogin) {
-  return (
-    <SellerLogin
-      onBack={() => setShowSellerLogin(false)}
-      onSignup={() => {
-        setShowSellerLogin(false);
-        setShowSellerRegister(true);
-      }}
-    />
-  );
-}
+  // =========================
+  // SELLER REGISTER PAGE
+  // =========================
 
-// =========================
-// SELLER REGISTER PAGE
-// =========================
+  if (showSellerRegister) {
+    return (
+      <SellerRegister
+        onBack={() => {
+          setShowSellerRegister(false);
+        }}
+        onSubmit={() => {
+          console.log("Seller partnership request submitted");
 
-if (showSellerRegister) {
-  return (
-    <SellerRegister
-      onBack={() => setShowSellerRegister(false)}
-      onSubmit={() => {
-        setShowSellerRegister(false);
-        setShowSellerLogin(true);
-      }}
-    />
-  );
-}
+          setShowSellerRegister(false);
+          setShowSellerLogin(true);
+        }}
+      />
+    );
+  }
 
+  // =========================
+  // SELLER LOGIN PAGE
+  // =========================
+
+  if (showSellerLogin) {
+    return (
+      <SellerLogin
+        onBack={() => {
+          setShowSellerLogin(false);
+        }}
+        onSignup={() => {
+          setShowSellerLogin(false);
+          setShowSellerRegister(true);
+        }}
+      />
+    );
+  }
+
+  // =========================
+  // ARTISANS PAGE
+  // =========================
+
+  if (showArtisans) {
+    return (
+      <Artisans
+        onBack={() => {
+          setShowArtisans(false);
+        }}
+      />
+    );
+  }
 
   // =========================
   // MAIN HOME PAGE
@@ -136,13 +182,16 @@ if (showSellerRegister) {
       <AnnouncementBar />
 
       <Navbar
-  onLoginClick={() => {
-    setShowLogin(true);
-  }}
-  onSellerClick={() => {
-    setShowSellerLogin(true);
-  }}
-/>
+        onLoginClick={() => {
+          setShowLogin(true);
+        }}
+        onSellerClick={() => {
+          setShowSellerRegister(true);
+        }}
+        onArtisansClick={() => {
+          setShowArtisans(true);
+        }}
+      />
 
       <Hero />
 
@@ -155,21 +204,37 @@ if (showSellerRegister) {
           CATEGORY PAGES
       ========================== */}
 
-      {activeCategory === "All Crafts" && <ProductSection />}
+      {activeCategory === "All Crafts" && (
+        <ProductSection />
+      )}
 
-      {activeCategory === "Terracotta" && <Terracotta />}
+      {activeCategory === "Terracotta" && (
+        <Terracotta />
+      )}
 
-      {activeCategory === "Art works" && <ArtWorks />}
+      {activeCategory === "Art works" && (
+        <ArtWorks />
+      )}
 
-      {activeCategory === "Bamboo & Cane" && <BambooCane />}
+      {activeCategory === "Bamboo & Cane" && (
+        <BambooCane />
+      )}
 
-      {activeCategory === "Dokra & Metal" && <DokraMetal />}
+      {activeCategory === "Dokra & Metal" && (
+        <DokraMetal />
+      )}
 
-      {activeCategory === "Woodcraft" && <Woodcraft />}
+      {activeCategory === "Woodcraft" && (
+        <Woodcraft />
+      )}
 
-      {activeCategory === "Home Décor" && <HomeDecor />}
+      {activeCategory === "Home Décor" && (
+        <HomeDecor />
+      )}
 
-      {activeCategory === "Jewellery" && <Jewellery />}
+      {activeCategory === "Jewellery" && (
+        <Jewellery />
+      )}
 
       {activeCategory === "Bags & Accessories" && (
         <BagsAccessories />
@@ -178,6 +243,7 @@ if (showSellerRegister) {
       {activeCategory === "হাতের ও সৃজনকর্ম" && (
         <HandEmbroidery />
       )}
+
     </div>
   );
 }
