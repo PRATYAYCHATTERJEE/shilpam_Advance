@@ -1,6 +1,6 @@
 import logo from "../assets/logo.png";
 
-function Navbar() {
+function Navbar({ onLoginClick, onSellerClick }) {
   return (
     <nav className="flex w-full items-center justify-between border-b border-[#4a2119]/10 bg-[#f8edda] px-8 py-3">
 
@@ -44,9 +44,13 @@ function Navbar() {
           Artisans
         </a>
 
-        <a href="#seller" className="transition-colors hover:text-[#b8522c]">
-          Become a Seller
-        </a>
+        <button
+  type="button"
+  onClick={onSellerClick}
+  className="transition-colors hover:text-[#b8522c]"
+>
+  Become a Seller
+</button>
 
         <a href="#about" className="transition-colors hover:text-[#b8522c]">
           About Us
@@ -74,13 +78,14 @@ function Navbar() {
           ⌕
         </button>
 
-        <button
-          type="button"
-          aria-label="Profile"
-          className="text-xl transition-transform hover:-translate-y-0.5"
-        >
-          ♙
-        </button>
+       <button 
+  type="button" 
+  aria-label="Profile" 
+  onClick={onLoginClick}
+  className="text-xl transition-transform hover:-translate-y-0.5" 
+> 
+  ♙ 
+</button>
 
         <button
           type="button"

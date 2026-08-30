@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import CategoryBar from "./components/CategoryBar";
 import ProductSection from "./components/ProductSection";
+
 import Terracotta from "./components/categories/Terracotta";
 import ArtWorks from "./components/categories/ArtWorks";
 import BambooCane from "./components/categories/BambooCane";
@@ -16,15 +17,23 @@ import Jewellery from "./components/categories/Jewellery";
 import BagsAccessories from "./components/categories/BagsAccessories";
 import HandEmbroidery from "./components/categories/HandEmbroidery";
 
-
-
-
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import SellerLogin from "./pages/SellerLogin";
+import SellerRegister from "./pages/SellerRegister";
 
 function App() {
   const [showOpening, setShowOpening] = useState(true);
   const [showHome, setShowHome] = useState(false);
 
+  // Category state
   const [activeCategory, setActiveCategory] = useState("All Crafts");
+
+  // Login / Signup state
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+  const [showSellerLogin, setShowSellerLogin] = useState(false);
+  const [showSellerRegister, setShowSellerRegister] = useState(false);
 
   useEffect(() => {
     const openingTimer = setTimeout(() => {
@@ -38,9 +47,85 @@ function App() {
     return () => clearTimeout(openingTimer);
   }, []);
 
+  // =========================
+  // OPENING SCREEN
+  // =========================
+
   if (showOpening) {
     return <OpeningScreen />;
   }
+
+  // =========================
+  // SIGNUP PAGE
+  // =========================
+
+  if (showSignup) {
+    return (
+      <Signup
+        onLogin={() => {
+          setShowSignup(false);
+          setShowLogin(true);
+        }}
+        onBack={() => {
+          setShowSignup(false);
+        }}
+      />
+    );
+  }
+
+  // =========================
+  // LOGIN PAGE
+  // =========================
+
+  if (showLogin) {
+    return (
+      <Login
+        onSignup={() => {
+          setShowLogin(false);
+          setShowSignup(true);
+        }}
+        onBack={() => {
+          setShowLogin(false);
+        }}
+      />
+    );
+  }
+   // =========================
+// SELLER LOGIN PAGE
+// =========================
+
+if (showSellerLogin) {
+  return (
+    <SellerLogin
+      onBack={() => setShowSellerLogin(false)}
+      onSignup={() => {
+        setShowSellerLogin(false);
+        setShowSellerRegister(true);
+      }}
+    />
+  );
+}
+
+// =========================
+// SELLER REGISTER PAGE
+// =========================
+
+if (showSellerRegister) {
+  return (
+    <SellerRegister
+      onBack={() => setShowSellerRegister(false)}
+      onSubmit={() => {
+        setShowSellerRegister(false);
+        setShowSellerLogin(true);
+      }}
+    />
+  );
+}
+
+
+  // =========================
+  // MAIN HOME PAGE
+  // =========================
 
   return (
     <div
@@ -50,7 +135,14 @@ function App() {
     >
       <AnnouncementBar />
 
-      <Navbar />
+      <Navbar
+  onLoginClick={() => {
+    setShowLogin(true);
+  }}
+  onSellerClick={() => {
+    setShowSellerLogin(true);
+  }}
+/>
 
       <Hero />
 
@@ -59,16 +151,33 @@ function App() {
         setActiveCategory={setActiveCategory}
       />
 
+      {/* =========================
+          CATEGORY PAGES
+      ========================== */}
+
       {activeCategory === "All Crafts" && <ProductSection />}
+
       {activeCategory === "Terracotta" && <Terracotta />}
+
       {activeCategory === "Art works" && <ArtWorks />}
+
       {activeCategory === "Bamboo & Cane" && <BambooCane />}
+
       {activeCategory === "Dokra & Metal" && <DokraMetal />}
+
       {activeCategory === "Woodcraft" && <Woodcraft />}
+
       {activeCategory === "Home Décor" && <HomeDecor />}
+
       {activeCategory === "Jewellery" && <Jewellery />}
-      {activeCategory === "Bags & Accessories" && <BagsAccessories />}
-      {activeCategory === "হাতের ও সৃজনকর্ম" && <HandEmbroidery />}
+
+      {activeCategory === "Bags & Accessories" && (
+        <BagsAccessories />
+      )}
+
+      {activeCategory === "হাতের ও সৃজনকর্ম" && (
+        <HandEmbroidery />
+      )}
     </div>
   );
 }
