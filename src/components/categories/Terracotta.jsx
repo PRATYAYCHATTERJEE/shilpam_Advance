@@ -1,15 +1,15 @@
 import kolka from "../../assets/kolka.png";
 
-import product1 from "../../assets/bag1.png";
-import product2 from "../../assets/bag2.png";
-import product3 from "../../assets/bag3.png";
-import product4 from "../../assets/bag4.png";
-import product5 from "../../assets/bag5.png";
-import product6 from "../../assets/bag6.png";
-import product7 from "../../assets/bag7.png";
-import product8 from "../../assets/bag8.png";
-import product9 from "../../assets/bag9.png";
-import product10 from "../../assets/bag10.png";
+import product1 from "../../assets/Terracotta/terra1.png";
+import product2 from "../../assets/Terracotta/terra2.png";
+import product3 from "../../assets/Terracotta/terra3.png";
+import product4 from "../../assets/Terracotta/terra4.png";
+import product5 from "../../assets/Terracotta/terra5.png";
+import product6 from "../../assets/Terracotta/terra6.png";
+import product7 from "../../assets/Terracotta/terra7.png";
+import product8 from "../../assets/Terracotta/terra8.png";
+import product9 from "../../assets/Terracotta/terra9.png";
+import product10 from "../../assets/Terracotta/terra10.png";
 
 function Terracotta() {
   const products = [
