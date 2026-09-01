@@ -1,6 +1,6 @@
 import kolka from "../../assets/kolka.png";
 
-import product1 from "../../assets/bag1.png";
+import product1 from "../../assets/Artworks/art1.png";
 import product2 from "../../assets/bag2.png";
 import product3 from "../../assets/bag3.png";
 import product4 from "../../assets/bag4.png";
