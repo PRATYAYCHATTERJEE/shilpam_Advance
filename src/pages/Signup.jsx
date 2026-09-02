@@ -6,20 +6,117 @@ function Signup({ onBack, onLogin }) {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreed, setAgreed] = useState(false);
 
-  const handleSubmit = (e) => {
+  // Form data
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  // UI states
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    // Clear previous error while typing
+    if (error) {
+      setError("");
+    }
+  };
+
+  // Handle signup
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setError("");
+
+    // Terms check
     if (!agreed) {
-      alert("Please agree to the Terms & Conditions.");
+      setError("Please agree to the Terms & Conditions.");
       return;
     }
 
-    console.log("Signup submitted");
+    // Password match check
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fullName: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            password: formData.password,
+            confirmPassword: formData.confirmPassword,
+            termsAccepted: agreed,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Registration failed");
+      }
+
+      // Save authentication data
+      localStorage.setItem("shilpamToken", data.token);
+      localStorage.setItem("shilpamUser", JSON.stringify(data.user));
+
+      alert("Account created successfully! 🎉");
+
+      // Reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        password: "",
+        confirmPassword: "",
+      });
+
+      setAgreed(false);
+
+      /*
+        For now, send the user to the Sign In page.
+        Later, when we create the full authentication
+        context/state, we can automatically log them in.
+      */
+      if (onLogin) {
+        onLogin();
+      }
+    } catch (error) {
+      console.error("Signup Error:", error);
+
+      setError(
+        error.message || "Something went wrong. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#f8edda] px-5 py-8">
-
       {/* =========================================
           TOP LEFT KOLKA
       ========================================== */}
@@ -65,7 +162,6 @@ function Signup({ onBack, onLogin }) {
       ========================================== */}
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center">
-
         <div className="mb-1 text-[20px] text-[#bd431c]">
           ✦
         </div>
@@ -77,7 +173,6 @@ function Signup({ onBack, onLogin }) {
         <p className="font-serif text-[15px] text-[#914326]">
           A Piece of Bengal, Made for You.
         </p>
-
       </div>
 
       {/* =========================================
@@ -95,9 +190,7 @@ function Signup({ onBack, onLogin }) {
           ====================================== */}
 
           <div className="text-center">
-
             <div className="flex items-center justify-center gap-3">
-
               <span className="text-[15px] text-[#bd431c]">
                 ✦
               </span>
@@ -109,28 +202,22 @@ function Signup({ onBack, onLogin }) {
               <span className="text-[15px] text-[#bd431c]">
                 ✦
               </span>
-
             </div>
 
             <p className="mt-1 font-serif text-[16px] text-[#8c4930]">
               Join the Silpam community
             </p>
-
           </div>
 
           {/* =====================================
               FORM
           ====================================== */}
 
-          <form
-            onSubmit={handleSubmit}
-            className="mt-8"
-          >
+          <form onSubmit={handleSubmit} className="mt-8">
 
             {/* FULL NAME */}
 
             <div>
-
               <label
                 htmlFor="fullName"
                 className="mb-2 block text-[14px] font-semibold text-[#4a2119]"
@@ -140,8 +227,11 @@ function Signup({ onBack, onLogin }) {
 
               <input
                 id="fullName"
+                name="fullName"
                 type="text"
                 placeholder="Enter your full name"
+                value={formData.fullName}
+                onChange={handleChange}
                 required
                 className="
                   h-[54px]
@@ -162,13 +252,11 @@ function Signup({ onBack, onLogin }) {
                   focus:ring-[#bd552c]/10
                 "
               />
-
             </div>
 
             {/* EMAIL */}
 
             <div className="mt-5">
-
               <label
                 htmlFor="signupEmail"
                 className="mb-2 block text-[14px] font-semibold text-[#4a2119]"
@@ -178,8 +266,11 @@ function Signup({ onBack, onLogin }) {
 
               <input
                 id="signupEmail"
+                name="email"
                 type="email"
                 placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
                 required
                 className="
                   h-[54px]
@@ -200,13 +291,11 @@ function Signup({ onBack, onLogin }) {
                   focus:ring-[#bd552c]/10
                 "
               />
-
             </div>
 
             {/* PHONE */}
 
             <div className="mt-5">
-
               <label
                 htmlFor="phone"
                 className="mb-2 block text-[14px] font-semibold text-[#4a2119]"
@@ -216,8 +305,11 @@ function Signup({ onBack, onLogin }) {
 
               <input
                 id="phone"
+                name="phone"
                 type="tel"
                 placeholder="Enter your phone number"
+                value={formData.phone}
+                onChange={handleChange}
                 required
                 className="
                   h-[54px]
@@ -238,13 +330,11 @@ function Signup({ onBack, onLogin }) {
                   focus:ring-[#bd552c]/10
                 "
               />
-
             </div>
 
             {/* PASSWORD */}
 
             <div className="mt-5">
-
               <label
                 htmlFor="signupPassword"
                 className="mb-2 block text-[14px] font-semibold text-[#4a2119]"
@@ -253,72 +343,15 @@ function Signup({ onBack, onLogin }) {
               </label>
 
               <div className="relative">
-
                 <input
                   id="signupPassword"
+                  name="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Create a password"
+                  value={formData.password}
+                  onChange={handleChange}
                   required
-                  className="
-                    h-[54px]
-                    w-full
-                    rounded-[10px]
-                    border
-                    border-[#e2cdb8]
-                    bg-[#fffaf3]
-                    px-4
-                    pr-12
-                    text-[15px]
-                    text-[#32170f]
-                    outline-none
-                    transition-all
-                    duration-300
-                    placeholder:text-[#b69782]
-                    focus:border-[#bd552c]
-                    focus:ring-2
-                    focus:ring-[#bd552c]/10
-                  "
-                />
-
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="
-                    absolute
-                    right-4
-                    top-1/2
-                    -translate-y-1/2
-                    text-[14px]
-                    text-[#8b5c47]
-                    hover:text-[#bd431c]
-                  "
-                  aria-label="Toggle password visibility"
-                >
-                  ◉
-                </button>
-
-              </div>
-
-            </div>
-
-            {/* CONFIRM PASSWORD */}
-
-            <div className="mt-5">
-
-              <label
-                htmlFor="confirmPassword"
-                className="mb-2 block text-[14px] font-semibold text-[#4a2119]"
-              >
-                Confirm Password
-              </label>
-
-              <div className="relative">
-
-                <input
-                  id="confirmPassword"
-                  type={showConfirmPassword ? "text" : "password"}
-                  placeholder="Confirm your password"
-                  required
+                  minLength={6}
                   className="
                     h-[54px]
                     w-full
@@ -343,7 +376,75 @@ function Signup({ onBack, onLogin }) {
                 <button
                   type="button"
                   onClick={() =>
-                    setShowConfirmPassword(!showConfirmPassword)
+                    setShowPassword(!showPassword)
+                  }
+                  className="
+                    absolute
+                    right-4
+                    top-1/2
+                    -translate-y-1/2
+                    text-[14px]
+                    text-[#8b5c47]
+                    hover:text-[#bd431c]
+                  "
+                  aria-label="Toggle password visibility"
+                >
+                  ◉
+                </button>
+              </div>
+            </div>
+
+            {/* CONFIRM PASSWORD */}
+
+            <div className="mt-5">
+              <label
+                htmlFor="confirmPassword"
+                className="mb-2 block text-[14px] font-semibold text-[#4a2119]"
+              >
+                Confirm Password
+              </label>
+
+              <div className="relative">
+                <input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type={
+                    showConfirmPassword
+                      ? "text"
+                      : "password"
+                  }
+                  placeholder="Confirm your password"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  required
+                  minLength={6}
+                  className="
+                    h-[54px]
+                    w-full
+                    rounded-[10px]
+                    border
+                    border-[#e2cdb8]
+                    bg-[#fffaf3]
+                    px-4
+                    pr-12
+                    text-[15px]
+                    text-[#32170f]
+                    outline-none
+                    transition-all
+                    duration-300
+                    placeholder:text-[#b69782]
+                    focus:border-[#bd552c]
+                    focus:ring-2
+                    focus:ring-[#bd552c]/10
+                  "
+                />
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    setShowConfirmPassword(
+                      !showConfirmPassword
+                    )
                   }
                   className="
                     absolute
@@ -358,20 +459,19 @@ function Signup({ onBack, onLogin }) {
                 >
                   ◉
                 </button>
-
               </div>
-
             </div>
 
             {/* TERMS */}
 
             <div className="mt-5 flex items-center gap-2">
-
               <input
                 id="terms"
                 type="checkbox"
                 checked={agreed}
-                onChange={(e) => setAgreed(e.target.checked)}
+                onChange={(e) =>
+                  setAgreed(e.target.checked)
+                }
                 className="h-4 w-4 accent-[#ae4b27]"
               />
 
@@ -387,13 +487,21 @@ function Signup({ onBack, onLogin }) {
                   Terms & Conditions
                 </button>
               </label>
-
             </div>
+
+            {/* ERROR MESSAGE */}
+
+            {error && (
+              <div className="mt-4 rounded-[8px] border border-red-200 bg-red-50 px-4 py-3 text-center text-[13px] text-red-700">
+                {error}
+              </div>
+            )}
 
             {/* CREATE ACCOUNT */}
 
             <button
               type="submit"
+              disabled={loading}
               className="
                 mt-6
                 flex
@@ -414,18 +522,22 @@ function Signup({ onBack, onLogin }) {
                 hover:bg-[#963d1e]
                 hover:shadow-md
                 active:scale-[0.99]
+                disabled:cursor-not-allowed
+                disabled:opacity-60
               "
             >
-              Create Account
-              <span className="text-[20px]">
-                →
-              </span>
+              {loading ? "Creating Account..." : "Create Account"}
+
+              {!loading && (
+                <span className="text-[20px]">
+                  →
+                </span>
+              )}
             </button>
 
             {/* DIVIDER */}
 
             <div className="my-7 flex items-center gap-3">
-
               <div className="h-px flex-1 bg-[#e4d3bf]" />
 
               <span className="font-serif text-[14px] text-[#9a654d]">
@@ -433,13 +545,11 @@ function Signup({ onBack, onLogin }) {
               </span>
 
               <div className="h-px flex-1 bg-[#e4d3bf]" />
-
             </div>
 
             {/* LOGIN */}
 
             <p className="text-center text-[14px] text-[#805645]">
-
               Already have an account?
 
               <button
@@ -449,13 +559,10 @@ function Signup({ onBack, onLogin }) {
               >
                 Sign in
               </button>
-
             </p>
 
           </form>
-
         </div>
-
       </div>
 
       {/* =========================================
@@ -463,7 +570,6 @@ function Signup({ onBack, onLogin }) {
       ========================================== */}
 
       <div className="relative z-10 mt-6 flex items-center justify-center gap-3 font-serif text-[13px] text-[#9a6048]">
-
         <span className="text-[#bd431c]">
           ❖
         </span>
@@ -475,9 +581,7 @@ function Signup({ onBack, onLogin }) {
         <span className="text-[#bd431c]">
           ❖
         </span>
-
       </div>
-
     </main>
   );
 }
