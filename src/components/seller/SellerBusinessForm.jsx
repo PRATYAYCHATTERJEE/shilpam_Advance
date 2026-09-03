@@ -97,7 +97,7 @@ function SellerBusinessForm({ onBack, onSubmit }) {
                 <input
                   id="businessName"
                   type="text"
-                  placeholder="Enter your business or group name"
+                  placeholder="Enter your Aadhaar number"
                   className="
                     h-[58px]
                     w-full
@@ -173,17 +173,17 @@ function SellerBusinessForm({ onBack, onSubmit }) {
               <div>
 
                 <label
-                  htmlFor="businessEmail"
+                  htmlFor="PanCardNumber"
                   className="mb-2 block text-[14px] font-semibold text-[#4b2a1e]"
                 >
-                  Email Address
+                  Pan Card Number
                   <span className="ml-1 text-[#b64d26]">*</span>
                 </label>
 
                 <input
-                  id="businessEmail"
-                  type="email"
-                  placeholder="Enter your email address"
+                  id="PanCardNumber"
+                  type="text"
+                  placeholder="Enter your Pan Card number"
                   className="
                     h-[58px]
                     w-full
@@ -223,7 +223,7 @@ function SellerBusinessForm({ onBack, onSubmit }) {
                   htmlFor="location"
                   className="mb-2 block text-[14px] font-semibold text-[#4b2a1e]"
                 >
-                  Location
+                  Location As per your Aadhaar
                   <span className="ml-1 text-[#b64d26]">*</span>
                 </label>
 
