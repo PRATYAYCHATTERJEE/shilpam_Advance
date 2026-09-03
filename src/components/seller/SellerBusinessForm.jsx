@@ -90,7 +90,7 @@ function SellerBusinessForm({ onBack, onSubmit }) {
                   htmlFor="businessName"
                   className="mb-2 block text-[14px] font-semibold text-[#4b2a1e]"
                 >
-                  Business / Artisan Group Name
+                  Aadhaar Number
                   <span className="ml-1 text-[#b64d26]">*</span>
                 </label>
 
