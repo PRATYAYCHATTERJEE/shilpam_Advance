@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 const artisans = [
   {
     id: 1,
-    name: "Maya Das",
+    name: "Maya",
     category: "Bamboo & Cane",
     badge: "Bamboo Artisan",
     district: "Birbhum",
@@ -405,15 +405,14 @@ function Artisans() {
                 font-semibold
                 transition-all
                 duration-300
-                ${
-                  activeCategory === category
-                    ? `
+                ${activeCategory === category
+                  ? `
                       border-[#ae4818]
                       bg-[#ae4818]
                       text-white
                       shadow-md
                     `
-                    : `
+                  : `
                       border-[#cdbfae]
                       bg-[#f9f5ee]
                       text-[#4e453e]
