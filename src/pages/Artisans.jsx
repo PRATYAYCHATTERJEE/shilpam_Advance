@@ -8,7 +8,7 @@ const artisans = [
     badge: "Bamboo Artisan",
     district: "Birbhum",
     location: "Shantiniketan, Birbhum",
-    experience: 18,
+    experience: 11,
     rating: 4.9,
     reviews: 9,
     description:
