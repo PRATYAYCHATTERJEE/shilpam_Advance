@@ -12,7 +12,7 @@ const artisans = [
     rating: 4.9,
     reviews: 9,
     description:
-      "Crafting beautiful bamboo products with skill and patience.",
+      "Crafting  skill and patience.",
     image: "",
   },
 
