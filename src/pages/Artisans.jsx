@@ -27,7 +27,7 @@ const artisans = [
     rating: 4.9,
     reviews: 150,
     description:
-      "Preserving the ancient art of dokra craft with passion.",
+      "Preserving the  art of dokra craft with passion.",
     image: "",
   },
 
