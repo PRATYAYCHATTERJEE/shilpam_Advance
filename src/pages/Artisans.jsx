@@ -7,7 +7,7 @@ const artisans = [
     category: "Bamboo & Cane",
     badge: "Bamboo Artisan",
     district: "Birbhum",
-    location: "Shantiniketan, Birbhum",
+    location: "Shantiniketan",
     experience: 11,
     rating: 4.9,
     reviews: 9,
