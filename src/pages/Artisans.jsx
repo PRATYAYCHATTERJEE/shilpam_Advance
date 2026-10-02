@@ -22,7 +22,7 @@ const artisans = [
     category: "Dokra & Metal",
     badge: "Dokra Artisan",
     district: "Purulia",
-    location: "Diarapur, Purulia",
+    location: "Diarapur",
     experience: 30,
     rating: 4.9,
     reviews: 150,
