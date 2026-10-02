@@ -42,7 +42,7 @@ const artisans = [
     rating: 4.8,
     reviews: 102,
     description:
-      "Stitching stories with threads in every Kantha piece.",
+      "Stitching  in every Kantha piece.",
     image: "",
   },
 
