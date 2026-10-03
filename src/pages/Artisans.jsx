@@ -42,7 +42,7 @@ const artisans = [
     rating: 4.8,
     reviews: 102,
     description:
-      "Stitching  in piece.",
+      "Stitching  in every piece.",
     image: "",
   },
 
