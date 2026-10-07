@@ -37,7 +37,7 @@ const artisans = [
     category: "Textile",
     badge: "Kantha",
     district: "Murshidabad",
-    location: "Murshidabad,",
+    location: "Murshidabad, West Bengal",
     experience: 1,
     rating: 4.8,
     reviews: 102,
