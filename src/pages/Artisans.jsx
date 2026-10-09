@@ -40,7 +40,7 @@ const artisans = [
     location: "Murshidabad, ",
     experience: 1.7,
     rating: 4.2,
-    reviews: 104,
+    reviews: 101,
     description:
       "Stitching  in .",
     image: "",
