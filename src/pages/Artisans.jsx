@@ -9,7 +9,7 @@ const artisans = [
     district: "Birbhum",
     location: "Shantiniketan",
     experience: 111,
-    rating: 4.9,
+    rating: 4.99,
     reviews: 9,
     description:
       "Crafting  ",
