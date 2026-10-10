@@ -19,7 +19,7 @@ const artisans = [
   {
     id: 2,
     name: "Haripada Saha",
-    category: "Dokra & Metal",
+    category: "Dokra  Metal",
     badge: "Dokra Artisan",
     district: "Purulia",
     location: "Diarapur",
