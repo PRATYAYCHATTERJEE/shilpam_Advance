@@ -23,7 +23,7 @@ const artisans = [
     badge: "Dokra Artisan",
     district: "Purulia",
     location: "Diarapur",
-    experience: 31,
+    experience: 32,
     rating: 4.9,
     reviews: 150,
     description:
