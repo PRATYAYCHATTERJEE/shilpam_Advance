@@ -24,7 +24,7 @@ const artisans = [
     district: "Purulia",
     location: "Diarapur",
     experience: 32,
-    rating: 4.2,
+    rating: 4.3,
     reviews: 150,
     description:
       "Preserving the  art of dokra craft with passion.",
