@@ -10,7 +10,7 @@ const artisans = [
     location: "Shantiniketan",
     experience: 111,
     rating: 4.99,
-    reviews: 99,
+    reviews: 9,
     description:
       "Crafting  ",
     image: "",
