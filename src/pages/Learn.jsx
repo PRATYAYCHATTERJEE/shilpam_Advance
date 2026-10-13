@@ -6,7 +6,7 @@ function Learn() {
     {
       title: "Terracotta Pot Making for Beginners",
       teacher: "Gopal Pal Artisan",
-      lessons: "12 Lessons",
+      lessons: "11 Lessons",
       level: "Beginner",
       tag: "Bestseller",
       tagColor: "bg-[#a52b13]",
