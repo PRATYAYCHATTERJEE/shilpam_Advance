@@ -38,7 +38,7 @@ const artisans = [
     badge: "Kantha",
     district: "Murshidabad",
     location: "Murshidabad, ",
-    experience: 1.7,
+    experience: 1.6,
     rating: 4.2,
     reviews: 100,
     description:
