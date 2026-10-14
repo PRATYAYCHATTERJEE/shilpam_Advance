@@ -55,7 +55,7 @@ const artisans = [
     location: "Bishnupur, Bankura",
     experience: 5,
     rating: 4.8,
-    reviews: 120,
+
     description:
       "Keeping the rich tradition of terracotta art alive for generations.",
     image: "",
